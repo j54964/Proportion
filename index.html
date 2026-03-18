@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料理比例換算</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100dvh;
+    background: #1a1208;
+    color: #f0e6d0;
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    color: #c8a96e;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    font-weight: normal;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .col-label {
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: #7a6a50;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .divider-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+
+  .row {
+    display: contents;
+  }
+
+  .cell {
+    padding: 5px 6px;
+  }
+
+  .divider-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 4px;
+  }
+
+  .divider-line {
+    width: 1px;
+    height: 100%;
+    background: #3a2e1e;
+  }
+
+  input {
+    width: 100%;
+    background: #231c0e;
+    border: 1px solid #3a2e1e;
+    border-radius: 6px;
+    color: #f0e6d0;
+    font-size: 1.15rem;
+    font-family: 'Georgia', serif;
+    padding: 12px 10px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input:focus {
+    border-color: #c8a96e;
+    background: #2a2010;
+  }
+
+  input.computed {
+    color: #c8a96e;
+    border-color: #4a3a22;
+    background: #1e1709;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+  .hint {
+    margin-top: 28px;
+    font-size: 0.7rem;
+    color: #4a3a22;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .clear-btn {
+    margin-top: 20px;
+    background: none;
+    border: 1px solid #3a2e1e;
+    color: #5a4a30;
+    font-family: 'Georgia', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .clear-btn:active {
+    color: #c8a96e;
+    border-color: #c8a96e;
+  }
+</style>
+</head>
+<body>
+
+<h1>比例換算</h1>
+
+<div class="grid">
+  <div class="col-label">A比例</div>
+  <div class="divider-label"></div>
+  <div class="col-label">B比例</div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="0" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="0" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="1" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="1" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="2" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="2" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="3" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="3" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="4" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="4" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="5" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="5" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="6" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="6" data-side="right" placeholder="—"></div>
+
+  <div class="cell"><input type="number" inputmode="decimal" data-index="7" data-side="left" placeholder="—"></div>
+  <div class="divider-cell"><div class="divider-line"></div></div>
+  <div class="cell"><input type="number" inputmode="decimal" data-index="7" data-side="right" placeholder="—"></div>
+</div>
+
+<div class="hint">任一側輸入數值後，在對側輸入其中一格即可換算</div>
+<button class="clear-btn" onclick="clearAll()">清除</button>
+
+<script>
+  const inputs = {
+    left:  Array.from(document.querySelectorAll('input[data-side="left"]')),
+    right: Array.from(document.querySelectorAll('input[data-side="right"]'))
+  };
+
+  function getRatios(side) {
+    return inputs[side].map(el => {
+      const v = parseFloat(el.value);
+      return isNaN(v) ? null : v;
+    });
+  }
+
+  function compute(sourceSide, triggerIndex) {
+    const targetSide = sourceSide === 'left' ? 'right' : 'left';
+    const sourceVals = getRatios(sourceSide);
+    const targetVals = getRatios(targetSide);
+
+    // Need at least 2 source values to define ratios
+    const filledSource = sourceVals.filter(v => v !== null);
+    if (filledSource.length < 2) return;
+
+    // Find the trigger value on the target side
+    const triggerTarget = targetVals[triggerIndex];
+    if (triggerTarget === null) return;
+
+    const sourceAnchor = sourceVals[triggerIndex];
+    if (sourceAnchor === null || sourceAnchor === 0) return;
+
+    const scale = triggerTarget / sourceAnchor;
+
+    inputs[targetSide].forEach((el, i) => {
+      if (i === triggerIndex) return; // already filled by user
+      if (sourceVals[i] === null) {
+        el.value = '';
+        el.classList.remove('computed');
+        return;
+      }
+      const result = sourceVals[i] * scale;
+      el.value = parseFloat(result.toFixed(2));
+      el.classList.add('computed');
+    });
+  }
+
+  function handleInput(side, index, el) {
+    el.classList.remove('computed');
+
+    const otherSide = side === 'left' ? 'right' : 'left';
+    const otherVals = getRatios(otherSide);
+    const hasOtherAnchor = otherVals[index] !== null;
+
+    if (hasOtherAnchor) {
+      // This side triggered, compute the same side from otherSide perspective
+      compute(otherSide, index);
+    } else {
+      // Check if other side has any filled values to act as source
+      const otherFilled = otherVals.some(v => v !== null);
+      if (otherFilled) {
+        // find first filled on other side and use it as anchor
+        const anchorIdx = otherVals.findIndex(v => v !== null);
+        if (anchorIdx !== -1) {
+          compute(side === 'left' ? 'right' : 'left', anchorIdx);
+        }
+      }
+    }
+
+    // Always try: use current side as source, trigger is index
+    compute(side, index);
+  }
+
+  [...inputs.left, ...inputs.right].forEach(el => {
+    el.addEventListener('input', () => {
+      const side = el.dataset.side;
+      const index = parseInt(el.dataset.index);
+      handleInput(side, index, el);
+    });
+  });
+
+  function clearAll() {
+    [...inputs.left, ...inputs.right].forEach(el => {
+      el.value = '';
+      el.classList.remove('computed');
+    });
+  }
+</script>
+</body>
+</html>
