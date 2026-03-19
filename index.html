@@ -212,15 +212,17 @@
     const scale = triggerTarget / sourceAnchor;
 
     inputs[targetSide].forEach((el, i) => {
-      if (i === triggerIndex) return; // already filled by user
-      if (sourceVals[i] === null) {
-        el.value = '';
-        el.classList.remove('computed');
-        return;
+      if (i === triggerIndex) return;
+      if (el.classList.contains('computed') || el.value === '') {
+        if (sourceVals[i] === null) {
+          el.value = '';
+          el.classList.remove('computed');
+          return;
+        }
+        const result = sourceVals[i] * scale;
+        el.value = parseFloat(result.toFixed(2));
+        el.classList.add('computed');
       }
-      const result = sourceVals[i] * scale;
-      el.value = parseFloat(result.toFixed(2));
-      el.classList.add('computed');
     });
   }
 
